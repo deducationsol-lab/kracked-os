@@ -83,52 +83,14 @@
   text-shadow: 0 0 12px rgba(255, 45, 149, 0.6);
 }
 
-/* Cyber cut corner utilities */
-.clip-cyber-corner {
-  clip-path: polygon(
-    0 10px,
-    10px 0,
-    calc(100% - 10px) 0,
-    100% 10px,
-    100% calc(100% - 10px),
-    calc(100% - 10px) 100%,
-    10px 100%,
-    0 calc(100% - 10px)
-  );
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
-
-.clip-cyber-btn {
-  clip-path: polygon(
-    12px 0,
-    100% 0,
-    100% calc(100% - 12px),
-    calc(100% - 12px) 100%,
-    0 100%,
-    0 12px
-  );
-}
-
-/* Keyframes for subtle cyber blink / glitch */
-@keyframes cyber-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-.animate-cyber-pulse {
-  animation: cyber-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes glitch-text {
-  0% { transform: translate(0) }
-  20% { transform: translate(-1px, 1px) }
-  40% { transform: translate(-1px, -1px) }
-  60% { transform: translate(1px, 1px) }
-  80% { transform: translate(1px, -1px) }
-  100% { transform: translate(0) }
-}
-
-.glitch-hover:hover {
-  animation: glitch-text 0.25s infinite;
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 /* Custom Scrollbar for Terminal aesthetics */

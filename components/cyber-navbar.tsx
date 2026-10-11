@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { Terminal, Shield, Zap, Volume2, VolumeX, Code2, Globe } from 'lucide-react'
+import { Terminal, Shield, Zap, Volume2, VolumeX, Menu, X, Globe, Radio } from 'lucide-react'
 import { cyberAudio } from '@/lib/cyber-audio'
 
 interface NavbarProps {
@@ -11,7 +11,7 @@ interface NavbarProps {
 
 export function CyberNavbar({ onOpenTerminal, activeSection }: NavbarProps) {
   const [audioMuted, setAudioMuted] = useState(false)
-  const [systemUptime, setSystemUptime] = useState('99.98%')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [ping, setPing] = useState(12)
 
   useEffect(() => {
@@ -40,6 +40,7 @@ export function CyberNavbar({ onOpenTerminal, activeSection }: NavbarProps) {
 
   const handleNavClick = (href: string) => {
     cyberAudio.playTerminalKey()
+    setMobileMenuOpen(false)
     const target = document.querySelector(href)
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' })
@@ -47,24 +48,24 @@ export function CyberNavbar({ onOpenTerminal, activeSection }: NavbarProps) {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#00F0FF]/20 bg-[#050508]/85 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b border-[#00F0FF]/20 bg-[#050508]/90 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
         
         {/* Brand Terminal Logo */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-3">
           <a 
             href="#"
             onClick={() => cyberAudio.playExecute()}
-            className="group flex items-center space-x-2.5 font-mono text-sm tracking-wider text-white transition-all hover:text-[#00FF9F]"
+            className="group flex items-center space-x-2 font-mono text-xs sm:text-sm tracking-wider text-white transition-all hover:text-[#00FF9F]"
           >
-            <span className="flex items-center justify-center w-7 h-7 rounded border border-[#00F0FF]/40 bg-[#00F0FF]/10 text-[#00F0FF] group-hover:border-[#00FF9F] group-hover:text-[#00FF9F] group-hover:shadow-[0_0_12px_rgba(0,255,159,0.4)] transition-all">
-              <span className="font-bold text-xs">{'>_'}</span>
+            <span className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded border border-[#00F0FF]/40 bg-[#00F0FF]/10 text-[#00F0FF] group-hover:border-[#00FF9F] group-hover:text-[#00FF9F] group-hover:shadow-[0_0_12px_rgba(0,255,159,0.4)] transition-all">
+              <span className="font-bold text-[11px] sm:text-xs">{'>_'}</span>
             </span>
             <div className="flex flex-col">
-              <span className="font-bold tracking-tight text-base text-white group-hover:text-[#00FF9F] transition-colors">
+              <span className="font-bold tracking-tight text-sm sm:text-base text-white group-hover:text-[#00FF9F] transition-colors">
                 KrackedDevs
               </span>
-              <span className="text-[9px] text-[#00F0FF]/70 tracking-widest leading-none">
+              <span className="text-[8px] sm:text-[9px] text-[#00F0FF]/70 tracking-widest leading-none">
                 KRACKED_OS // MY
               </span>
             </div>
@@ -78,13 +79,13 @@ export function CyberNavbar({ onOpenTerminal, activeSection }: NavbarProps) {
           </div>
         </div>
 
-        {/* Center / Right Navigation Items */}
+        {/* Center / Desktop Navigation Items */}
         <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
           {navItems.map((item) => (
             <button
               key={item.label}
               onClick={() => handleNavClick(item.href)}
-              className="px-3 py-1.5 text-xs font-mono uppercase tracking-widest text-zinc-400 hover:text-white hover:bg-white/5 rounded border border-transparent hover:border-[#00F0FF]/30 transition-all duration-150 flex items-center space-x-1"
+              className="px-2.5 lg:px-3 py-1.5 text-xs font-mono uppercase tracking-widest text-zinc-400 hover:text-white hover:bg-white/5 rounded border border-transparent hover:border-[#00F0FF]/30 transition-all duration-150"
             >
               <span>{item.label}</span>
             </button>
@@ -92,7 +93,7 @@ export function CyberNavbar({ onOpenTerminal, activeSection }: NavbarProps) {
         </nav>
 
         {/* Status indicator + Sound Toggle + Interactive Terminal Drawer Trigger */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-3">
           
           {/* Audio Synthesizer Feedback Toggle */}
           <button
@@ -104,7 +105,7 @@ export function CyberNavbar({ onOpenTerminal, activeSection }: NavbarProps) {
           </button>
 
           {/* System Online Badge */}
-          <div className="hidden sm:flex items-center space-x-2 px-2.5 py-1 rounded-full border border-[#00FF9F]/30 bg-[#00FF9F]/5 text-[11px] font-mono text-[#00FF9F]">
+          <div className="flex items-center space-x-1.5 px-2 sm:px-2.5 py-1 rounded-full border border-[#00FF9F]/30 bg-[#00FF9F]/5 text-[10px] sm:text-[11px] font-mono text-[#00FF9F]">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF9F] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00FF9F]"></span>
@@ -118,15 +119,47 @@ export function CyberNavbar({ onOpenTerminal, activeSection }: NavbarProps) {
               cyberAudio.playExecute()
               onOpenTerminal()
             }}
-            className="group flex items-center space-x-2 px-3 py-1.5 rounded bg-[#00F0FF]/10 hover:bg-[#00F0FF]/20 border border-[#00F0FF]/50 hover:border-[#00F0FF] text-[#00F0FF] text-xs font-mono font-bold tracking-wider hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all"
+            className="group flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded bg-[#00F0FF]/10 hover:bg-[#00F0FF]/20 border border-[#00F0FF]/50 hover:border-[#00F0FF] text-[#00F0FF] text-xs font-mono font-bold tracking-wider hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all"
           >
             <Terminal className="w-3.5 h-3.5 group-hover:rotate-6 transition-transform" />
             <span className="hidden sm:inline">TERMINAL</span>
             <span>{'>_'}</span>
           </button>
+
+          {/* Mobile Hamburger Toggle */}
+          <button
+            onClick={() => {
+              cyberAudio.playTerminalKey()
+              setMobileMenuOpen(!mobileMenuOpen)
+            }}
+            className="md:hidden p-1.5 rounded border border-white/10 bg-white/5 text-zinc-300 hover:text-white"
+          >
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          </button>
         </div>
 
       </div>
+
+      {/* Mobile Menu Dropdown Strip */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-t border-white/10 bg-[#080812] px-4 py-3 font-mono text-xs space-y-1">
+          {navItems.map((item) => (
+            <button
+              key={item.label}
+              onClick={() => handleNavClick(item.href)}
+              className="w-full text-left py-2 px-3 rounded hover:bg-white/5 text-zinc-300 hover:text-[#00FF9F] flex items-center justify-between"
+            >
+              <span>// {item.label}</span>
+              <span className="text-zinc-600">{'>'}</span>
+            </button>
+          ))}
+          <div className="pt-2 border-t border-white/10 flex justify-between text-[10px] text-zinc-500">
+            <span>KUALA LUMPUR FIBER</span>
+            <span className="text-[#00FF9F]">LATENCY: {ping}MS</span>
+          </div>
+        </div>
+      )}
+
     </header>
   )
 }

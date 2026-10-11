@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { MessageSquare, Terminal, Rocket, Users, Shield, Zap, Flame, Code, Cpu, ChevronRight, CheckCircle2 } from 'lucide-react'
+import { MessageSquare, Terminal, Rocket, Users, Shield, Zap, Flame, Code, Cpu, ChevronRight, CheckCircle2, Sparkles } from 'lucide-react'
 import { cyberAudio } from '@/lib/cyber-audio'
 
 interface ThreeDoorsProps {
@@ -10,29 +10,30 @@ interface ThreeDoorsProps {
 }
 
 export function ThreeDoors({ onOpenTerminal, onSelectDoor }: ThreeDoorsProps) {
-  const [activeTab, setActiveTab] = useState<'community' | 'school' | 'labs'>('community')
-
   return (
-    <section id="three-doors" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="three-doors" className="relative w-full py-12 sm:py-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       
       {/* Section Header */}
-      <div className="mb-10 text-center space-y-3">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#00F0FF]">
+      <div className="mb-8 sm:mb-10 text-center space-y-2 sm:space-y-3">
+        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] sm:text-xs font-mono text-[#00F0FF]">
           <span>SYSTEM_ARCHITECTURE // THREE_PILLARS</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-black font-sans text-white tracking-tight">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black font-sans text-white tracking-tight">
           Three Doors. One Unified OS.
         </h2>
-        <p className="text-sm sm:text-base text-zinc-400 font-mono max-w-2xl mx-auto">
-          Whether you want raw builder camaraderie, structured cutting-edge AI apprenticeships, or venture venture incubation with grant capital.
+        <p className="text-xs sm:text-sm lg:text-base text-zinc-400 font-mono max-w-2xl mx-auto">
+          Whether you want raw builder camaraderie, structured cutting-edge AI apprenticeships, or venture incubation with grant capital.
         </p>
       </div>
 
       {/* Grid of Three Distinct System Windows */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
         
         {/* DOOR 1: Community (Magenta #FF2D95 Theme) */}
-        <div className="group relative rounded-xl border border-[#FF2D95]/30 bg-[#080812] p-6 lg:p-8 flex flex-col justify-between shadow-[0_0_30px_rgba(255,45,149,0.15)] hover:shadow-[0_0_40px_rgba(255,45,149,0.3)] hover:border-[#FF2D95] transition-all duration-300">
+        <div 
+          id="community"
+          className="group relative rounded-xl border border-[#FF2D95]/30 bg-[#080812] p-5 sm:p-6 lg:p-8 flex flex-col justify-between shadow-[0_0_30px_rgba(255,45,149,0.15)] hover:shadow-[0_0_40px_rgba(255,45,149,0.3)] hover:border-[#FF2D95] transition-all duration-300"
+        >
           
           {/* Top Window Bar */}
           <div className="space-y-4">
@@ -46,8 +47,8 @@ export function ThreeDoors({ onOpenTerminal, onSelectDoor }: ThreeDoorsProps) {
               </span>
             </div>
 
-            <div className="space-y-2">
-              <h3 className="text-2xl font-bold font-sans text-white group-hover:text-[#FF2D95] transition-colors">
+            <div className="space-y-1.5">
+              <h3 className="text-xl sm:text-2xl font-bold font-sans text-white group-hover:text-[#FF2D95] transition-colors">
                 The War Room
               </h3>
               <p className="text-xs text-zinc-400 font-mono leading-relaxed">
@@ -56,7 +57,7 @@ export function ThreeDoors({ onOpenTerminal, onSelectDoor }: ThreeDoorsProps) {
             </div>
 
             {/* Feature Bullet Points */}
-            <div className="space-y-2.5 pt-2 text-xs font-mono text-zinc-300">
+            <div className="space-y-2 pt-2 text-xs font-mono text-zinc-300">
               <div className="flex items-start space-x-2">
                 <span className="text-[#FF2D95] font-bold">{'>'}</span>
                 <span><strong>Ship-or-Die Demo Nights:</strong> Every Friday 9PM. Pitch code or get muted.</span>
@@ -73,17 +74,20 @@ export function ThreeDoors({ onOpenTerminal, onSelectDoor }: ThreeDoorsProps) {
           </div>
 
           {/* Bottom Action */}
-          <div className="pt-6 mt-6 border-t border-white/10">
+          <div className="pt-5 mt-5 border-t border-white/10">
             <div className="flex items-center justify-between mb-3 text-[11px] font-mono text-zinc-500">
-              <span>STATUS: 1,420 ONLINE NOW</span>
-              <span className="text-[#FF2D95]">FREE ENTRY</span>
+              <span className="flex items-center space-x-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF2D95] animate-pulse" />
+                <span>1,420 ONLINE NOW</span>
+              </span>
+              <span className="text-[#FF2D95] font-bold">FREE ENTRY</span>
             </div>
             <button
               onClick={() => {
                 cyberAudio.playExecute()
                 onOpenTerminal()
               }}
-              className="w-full py-3 rounded bg-[#FF2D95]/10 hover:bg-[#FF2D95] border border-[#FF2D95]/50 hover:border-[#FF2D95] text-[#FF2D95] hover:text-black font-mono font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition-all duration-200"
+              className="w-full py-2.5 sm:py-3 rounded bg-[#FF2D95]/10 hover:bg-[#FF2D95] border border-[#FF2D95]/50 hover:border-[#FF2D95] text-[#FF2D95] hover:text-black font-mono font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition-all duration-200"
             >
               <span>JOIN_DISCORD_WAR_ROOM</span>
               <ChevronRight className="w-4 h-4" />
@@ -93,7 +97,10 @@ export function ThreeDoors({ onOpenTerminal, onSelectDoor }: ThreeDoorsProps) {
         </div>
 
         {/* DOOR 2: AI Builder School (Cyan #00F0FF Theme) */}
-        <div className="group relative rounded-xl border border-[#00F0FF]/30 bg-[#080812] p-6 lg:p-8 flex flex-col justify-between shadow-[0_0_30px_rgba(0,240,255,0.15)] hover:shadow-[0_0_40px_rgba(0,240,255,0.3)] hover:border-[#00F0FF] transition-all duration-300">
+        <div 
+          id="school"
+          className="group relative rounded-xl border border-[#00F0FF]/30 bg-[#080812] p-5 sm:p-6 lg:p-8 flex flex-col justify-between shadow-[0_0_30px_rgba(0,240,255,0.15)] hover:shadow-[0_0_40px_rgba(0,240,255,0.3)] hover:border-[#00F0FF] transition-all duration-300"
+        >
           
           <div className="space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-white/10 text-xs font-mono">
@@ -106,8 +113,8 @@ export function ThreeDoors({ onOpenTerminal, onSelectDoor }: ThreeDoorsProps) {
               </span>
             </div>
 
-            <div className="space-y-2">
-              <h3 className="text-2xl font-bold font-sans text-white group-hover:text-[#00F0FF] transition-colors">
+            <div className="space-y-1.5">
+              <h3 className="text-xl sm:text-2xl font-bold font-sans text-white group-hover:text-[#00F0FF] transition-colors">
                 AI Builder School
               </h3>
               <p className="text-xs text-zinc-400 font-mono leading-relaxed">
@@ -116,7 +123,7 @@ export function ThreeDoors({ onOpenTerminal, onSelectDoor }: ThreeDoorsProps) {
             </div>
 
             {/* Feature Bullet Points */}
-            <div className="space-y-2.5 pt-2 text-xs font-mono text-zinc-300">
+            <div className="space-y-2 pt-2 text-xs font-mono text-zinc-300">
               <div className="flex items-start space-x-2">
                 <span className="text-[#00F0FF] font-bold">{'>'}</span>
                 <span><strong>Agent Architectures:</strong> LangGraph, Vercel AI SDK, Tool Calling, MCPs.</span>
@@ -132,17 +139,17 @@ export function ThreeDoors({ onOpenTerminal, onSelectDoor }: ThreeDoorsProps) {
             </div>
           </div>
 
-          <div className="pt-6 mt-6 border-t border-white/10">
+          <div className="pt-5 mt-5 border-t border-white/10">
             <div className="flex items-center justify-between mb-3 text-[11px] font-mono text-zinc-500">
               <span>ACCEPTANCE: MERIT BASED</span>
-              <span className="text-[#00F0FF]">APPLICATIONS OPEN</span>
+              <span className="text-[#00F0FF] font-bold">APPLICATIONS OPEN</span>
             </div>
             <button
               onClick={() => {
                 cyberAudio.playExecute()
                 onOpenTerminal()
               }}
-              className="w-full py-3 rounded bg-[#00F0FF]/10 hover:bg-[#00F0FF] border border-[#00F0FF]/50 hover:border-[#00F0FF] text-[#00F0FF] hover:text-black font-mono font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition-all duration-200"
+              className="w-full py-2.5 sm:py-3 rounded bg-[#00F0FF]/10 hover:bg-[#00F0FF] border border-[#00F0FF]/50 hover:border-[#00F0FF] text-[#00F0FF] hover:text-black font-mono font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition-all duration-200"
             >
               <span>ACCESS_SYLLABUS & ENROLL</span>
               <ChevronRight className="w-4 h-4" />
@@ -152,7 +159,10 @@ export function ThreeDoors({ onOpenTerminal, onSelectDoor }: ThreeDoorsProps) {
         </div>
 
         {/* DOOR 3: KD Labs (Cyber Green #00FF9F Theme) */}
-        <div className="group relative rounded-xl border border-[#00FF9F]/30 bg-[#080812] p-6 lg:p-8 flex flex-col justify-between shadow-[0_0_30px_rgba(0,255,159,0.15)] hover:shadow-[0_0_40px_rgba(0,255,159,0.3)] hover:border-[#00FF9F] transition-all duration-300">
+        <div 
+          id="labs"
+          className="group relative rounded-xl border border-[#00FF9F]/30 bg-[#080812] p-5 sm:p-6 lg:p-8 flex flex-col justify-between shadow-[0_0_30px_rgba(0,255,159,0.15)] hover:shadow-[0_0_40px_rgba(0,255,159,0.3)] hover:border-[#00FF9F] transition-all duration-300"
+        >
           
           <div className="space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-white/10 text-xs font-mono">
@@ -165,8 +175,8 @@ export function ThreeDoors({ onOpenTerminal, onSelectDoor }: ThreeDoorsProps) {
               </span>
             </div>
 
-            <div className="space-y-2">
-              <h3 className="text-2xl font-bold font-sans text-white group-hover:text-[#00FF9F] transition-colors">
+            <div className="space-y-1.5">
+              <h3 className="text-xl sm:text-2xl font-bold font-sans text-white group-hover:text-[#00FF9F] transition-colors">
                 KD Labs & Grants
               </h3>
               <p className="text-xs text-zinc-400 font-mono leading-relaxed">
@@ -175,7 +185,7 @@ export function ThreeDoors({ onOpenTerminal, onSelectDoor }: ThreeDoorsProps) {
             </div>
 
             {/* Feature Bullet Points */}
-            <div className="space-y-2.5 pt-2 text-xs font-mono text-zinc-300">
+            <div className="space-y-2 pt-2 text-xs font-mono text-zinc-300">
               <div className="flex items-start space-x-2">
                 <span className="text-[#00FF9F] font-bold">{'>'}</span>
                 <span><strong>RM 50,000 Zero-Equity Grants:</strong> Backing early experimental MVPs.</span>
@@ -191,7 +201,7 @@ export function ThreeDoors({ onOpenTerminal, onSelectDoor }: ThreeDoorsProps) {
             </div>
           </div>
 
-          <div className="pt-6 mt-6 border-t border-white/10">
+          <div className="pt-5 mt-5 border-t border-white/10">
             {/* Live Seat Capacity Gauge */}
             <div className="mb-3 space-y-1">
               <div className="flex justify-between text-[11px] font-mono">
@@ -208,7 +218,7 @@ export function ThreeDoors({ onOpenTerminal, onSelectDoor }: ThreeDoorsProps) {
                 cyberAudio.playExecute()
                 onOpenTerminal()
               }}
-              className="w-full py-3 rounded bg-[#00FF9F]/10 hover:bg-[#00FF9F] border border-[#00FF9F]/50 hover:border-[#00FF9F] text-[#00FF9F] hover:text-black font-mono font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition-all duration-200"
+              className="w-full py-2.5 sm:py-3 rounded bg-[#00FF9F]/10 hover:bg-[#00FF9F] border border-[#00FF9F]/50 hover:border-[#00FF9F] text-[#00FF9F] hover:text-black font-mono font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition-all duration-200"
             >
               <span>SUBMIT_PROJECT_FOR_GRANT</span>
               <ChevronRight className="w-4 h-4" />

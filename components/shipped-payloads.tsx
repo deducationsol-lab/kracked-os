@@ -3,11 +3,10 @@
 import React, { useState } from 'react'
 import { SHIPPED_PROJECTS, ShippedProject } from '@/lib/kracked-data'
 import { cyberAudio } from '@/lib/cyber-audio'
-import { Rocket, Star, ExternalLink, Github, Code, Sparkles, Filter, Terminal, Zap } from 'lucide-react'
+import { Rocket, Star, ExternalLink, Github, Code, Sparkles, Filter, Terminal, Zap, CheckCircle2 } from 'lucide-react'
 
 export function ShippedPayloads() {
   const [filterCategory, setFilterCategory] = useState<string>('ALL')
-  const [activeProject, setActiveProject] = useState<ShippedProject | null>(null)
 
   const categories = ['ALL', 'AI_AGENT', 'WEB3_PROTOCOL', 'DEVELOPER_TOOLS', 'HARDWARE_IOT', 'FINTECH']
 
@@ -29,12 +28,12 @@ export function ShippedPayloads() {
   }
 
   return (
-    <section id="shipped" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="shipped" className="relative w-full py-12 sm:py-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-[#00FF9F]/20 gap-4">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 pb-4 border-b border-[#00FF9F]/20 gap-3 sm:gap-4">
         <div>
-          <div className="flex items-center space-x-2 text-xs font-mono text-[#00FF9F] mb-1">
+          <div className="flex items-center space-x-2 text-[11px] sm:text-xs font-mono text-[#00FF9F] mb-1">
             <Rocket className="w-3.5 h-3.5" />
             <span>PROOF_OF_SHIP // LIVE_REGISTRY</span>
           </div>
@@ -46,8 +45,8 @@ export function ShippedPayloads() {
           </p>
         </div>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 font-mono text-xs">
+        {/* Filter Pills with smooth horizontal scrolling for mobile */}
+        <div className="flex items-center gap-1.5 font-mono text-[11px] sm:text-xs overflow-x-auto no-scrollbar pb-1">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -55,7 +54,7 @@ export function ShippedPayloads() {
                 cyberAudio.playTerminalKey()
                 setFilterCategory(cat)
               }}
-              className={`px-3 py-1.5 rounded transition-all ${
+              className={`px-2.5 sm:px-3 py-1.5 rounded transition-all whitespace-nowrap ${
                 filterCategory === cat
                   ? 'bg-[#00FF9F]/20 text-[#00FF9F] border border-[#00FF9F]/50 font-bold shadow-[0_0_12px_rgba(0,255,159,0.3)]'
                   : 'bg-black/60 text-zinc-400 hover:text-white border border-white/10'
@@ -68,11 +67,11 @@ export function ShippedPayloads() {
       </div>
 
       {/* Grid of Shipped Projects */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {filteredProjects.map((project) => (
           <div
             key={project.id}
-            className="group relative rounded-xl border border-white/10 bg-[#080812] hover:border-[#00F0FF]/50 p-5 sm:p-6 flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(0,240,255,0.2)] transition-all duration-300"
+            className="group relative rounded-xl border border-white/10 bg-[#080812] hover:border-[#00F0FF]/50 p-4 sm:p-6 flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(0,240,255,0.2)] transition-all duration-300"
           >
             
             {/* Top metadata */}
@@ -86,9 +85,9 @@ export function ShippedPayloads() {
 
               {/* Title & Tagline */}
               <div>
-                <h3 className="text-lg font-bold font-sans text-white group-hover:text-[#00F0FF] transition-colors flex items-center justify-between">
-                  <span>{project.title}</span>
-                  <span className="text-[11px] font-mono text-[#00FF9F] font-bold">
+                <h3 className="text-base sm:text-lg font-bold font-sans text-white group-hover:text-[#00F0FF] transition-colors flex items-center justify-between gap-2">
+                  <span className="truncate">{project.title}</span>
+                  <span className="text-[10px] sm:text-[11px] font-mono text-[#00FF9F] font-bold shrink-0">
                     +{project.pwrBoost} PWR
                   </span>
                 </h3>
@@ -98,11 +97,11 @@ export function ShippedPayloads() {
               </div>
 
               {/* Builder Info */}
-              <div className="p-2.5 rounded bg-black/50 border border-white/5 flex items-center justify-between font-mono text-[11px]">
-                <div className="text-zinc-400">
+              <div className="p-2 sm:p-2.5 rounded bg-black/50 border border-white/5 flex items-center justify-between font-mono text-[11px]">
+                <div className="text-zinc-400 truncate">
                   BUILDER: <span className="text-white font-bold">{project.builder}</span>
                 </div>
-                <div className="text-[#00F0FF] text-[10px]">
+                <div className="text-[#00F0FF] text-[10px] shrink-0">
                   {project.location}
                 </div>
               </div>
@@ -143,8 +142,8 @@ export function ShippedPayloads() {
             </div>
 
             {/* Bottom Actions */}
-            <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
-              <div className="flex items-center space-x-1 font-mono text-[11px] text-[#00FF9F]">
+            <div className="pt-3.5 sm:pt-4 mt-3.5 sm:mt-4 border-t border-white/10 flex items-center justify-between">
+              <div className="flex items-center space-x-1 font-mono text-[10px] sm:text-[11px] text-[#00FF9F]">
                 <Zap className="w-3.5 h-3.5" />
                 <span>{project.bountyXP} XP REWARD</span>
               </div>
@@ -154,7 +153,7 @@ export function ShippedPayloads() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => cyberAudio.playTerminalKey()}
-                className="flex items-center space-x-1.5 px-3 py-1.5 rounded bg-white/5 hover:bg-[#00F0FF]/20 border border-white/10 hover:border-[#00F0FF]/50 text-xs font-mono text-zinc-300 hover:text-[#00F0FF] transition-all"
+                className="flex items-center space-x-1 px-2.5 sm:px-3 py-1.5 rounded bg-white/5 hover:bg-[#00F0FF]/20 border border-white/10 hover:border-[#00F0FF]/50 text-xs font-mono text-zinc-300 hover:text-[#00F0FF] transition-all"
               >
                 <span>INSPECT</span>
                 <ExternalLink className="w-3 h-3" />
