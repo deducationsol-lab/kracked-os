@@ -172,54 +172,121 @@ export function HeroSection({ onOpenTerminal, onJoinClick }: HeroSectionProps) {
           <div className="lg:col-span-6 relative flex flex-col items-center justify-center space-y-4">
             
             {/* Glowing Malaysia Particle Image with Cyber Overlays */}
-            <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-[#00F0FF]/25 bg-[#020205] shadow-[0_0_40px_rgba(0,240,255,0.15)] group">
+            <div className="relative w-full aspect-[2/1] rounded-xl overflow-hidden border border-[#00F0FF]/30 bg-[#020205] shadow-[0_0_40px_rgba(0,240,255,0.2)] group">
               
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_20261011-230827-v2cHm1bYdpQa46xQHJILu1poeKf9pI.png"
                 alt="Cyberpunk Glowing Particle Map of Malaysia"
                 fill
                 priority
-                className="object-contain object-center scale-105 group-hover:scale-110 transition-transform duration-700 opacity-90"
+                className="object-cover object-center opacity-90 transition-opacity"
               />
 
               {/* Scanlines & Particle Grid Overlay */}
-              <div className="absolute inset-0 scanlines opacity-40 pointer-events-none" />
+              <div className="absolute inset-0 scanlines opacity-35 pointer-events-none" />
+
+              {/* SVG Dynamic Network Grid & Fiber Cables (1000 x 500 space matching 2:1 container) */}
+              <svg viewBox="0 0 1000 500" className="absolute inset-0 w-full h-full pointer-events-none z-10">
+                {/* Peninsular Spine */}
+                <path
+                  d="M 205 132 L 240 207 L 285 290 L 335 347 L 385 397"
+                  fill="none"
+                  stroke="#00F0FF"
+                  strokeWidth="1.2"
+                  strokeDasharray="4,3"
+                  opacity="0.6"
+                />
+                {/* Cross-Sea Data Lines */}
+                <path
+                  d="M 285 290 Q 400 240 520 320"
+                  fill="none"
+                  stroke="#00FF9F"
+                  strokeWidth="1.5"
+                  strokeDasharray="5,4"
+                  opacity="0.7"
+                />
+                <path
+                  d="M 285 290 Q 520 160 765 127"
+                  fill="none"
+                  stroke="#00F0FF"
+                  strokeWidth="1.2"
+                  strokeDasharray="6,4"
+                  opacity="0.5"
+                />
+                <path
+                  d="M 520 320 L 765 127"
+                  fill="none"
+                  stroke="#00FF9F"
+                  strokeWidth="1.2"
+                  strokeDasharray="4,4"
+                  opacity="0.6"
+                />
+              </svg>
 
               {/* Cyber Matrix Code Floaters over the map */}
-              <div className="absolute top-3 left-3 font-mono text-[8px] sm:text-[9px] text-[#00F0FF]/70 space-y-0.5 pointer-events-none">
+              <div className="absolute top-2.5 left-2.5 font-mono text-[8px] sm:text-[9px] text-[#00F0FF]/80 space-y-0.5 pointer-events-none z-20">
                 <div>{'<node_12>'}</div>
                 <div>{'inode/tcp:active'}</div>
                 <div>{'init_build();'}</div>
               </div>
 
-              <div className="absolute top-3 right-3 font-mono text-[8px] sm:text-[9px] text-[#00FF9F]/70 text-right space-y-0.5 pointer-events-none">
+              <div className="absolute top-2.5 right-2.5 font-mono text-[8px] sm:text-[9px] text-[#00FF9F]/80 text-right space-y-0.5 pointer-events-none z-20">
                 <div>{'10010107010310'}</div>
                 <div>{'v0.4010VAtp'}</div>
               </div>
 
-              <div className="absolute bottom-3 left-3 font-mono text-[8px] sm:text-[9px] text-zinc-500 space-y-0.5 pointer-events-none">
+              <div className="absolute bottom-2.5 left-2.5 font-mono text-[8px] sm:text-[9px] text-zinc-400 space-y-0.5 pointer-events-none z-20">
                 <div>{'// malaysia.builder.grid'}</div>
-                <div className="text-[#00FF9F]">{'EST_ACTIVE_NODES: 3,408'}</div>
+                <div className="text-[#00FF9F] font-bold">{'EST_ACTIVE_NODES: 3,408'}</div>
               </div>
 
-              {/* Interactive Pulsing Hotspots on Map */}
-              <div className="absolute top-[58%] left-[28%] pointer-events-none">
-                <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3">
+              {/* Calibrated Pulsing Hotspots strictly locked to 2:1 container coordinates */}
+              {/* 1. Penang */}
+              <div className="absolute top-[26.5%] left-[20.5%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
+                <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00F0FF] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-[#00F0FF]"></span>
+                </span>
+              </div>
+
+              {/* 2. KL / Cyberjaya */}
+              <div className="absolute top-[58.0%] left-[28.5%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
+                <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00F0FF] opacity-80"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3 bg-[#00F0FF]"></span>
                 </span>
-                <span className="absolute left-3.5 -top-1 font-mono text-[8px] sm:text-[9px] text-[#00F0FF] whitespace-nowrap bg-black/80 px-1 rounded border border-[#00F0FF]/30">
+                <span className="absolute left-3.5 -top-1 font-mono text-[7px] sm:text-[8px] text-[#00F0FF] whitespace-nowrap bg-black/90 px-1 rounded border border-[#00F0FF]/40 font-bold">
                   KL / CYBERJAYA
                 </span>
               </div>
 
-              <div className="absolute top-[40%] right-[32%] pointer-events-none">
-                <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3">
+              {/* 3. Johor Bahru */}
+              <div className="absolute top-[79.5%] left-[38.5%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
+                <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF9F] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-[#00FF9F]"></span>
+                </span>
+              </div>
+
+              {/* 4. Kuching / Sarawak */}
+              <div className="absolute top-[64.0%] left-[52.0%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
+                <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF9F] opacity-80"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3 bg-[#00FF9F]"></span>
                 </span>
-                <span className="absolute left-3.5 -top-1 font-mono text-[8px] sm:text-[9px] text-[#00FF9F] whitespace-nowrap bg-black/80 px-1 rounded border border-[#00FF9F]/30">
-                  BORNEO TECH
+                <span className="absolute left-3.5 -top-1 font-mono text-[7px] sm:text-[8px] text-[#00FF9F] whitespace-nowrap bg-black/90 px-1 rounded border border-[#00FF9F]/40 font-bold">
+                  SARAWAK
+                </span>
+              </div>
+
+              {/* 5. Kota Kinabalu / Sabah */}
+              <div className="absolute top-[25.5%] left-[76.5%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
+                <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00F0FF] opacity-80"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3 bg-[#00F0FF]"></span>
+                </span>
+                <span className="absolute left-3.5 -top-1 font-mono text-[7px] sm:text-[8px] text-[#00F0FF] whitespace-nowrap bg-black/90 px-1 rounded border border-[#00F0FF]/40 font-bold">
+                  SABAH
                 </span>
               </div>
 

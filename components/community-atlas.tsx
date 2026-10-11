@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { MALAYSIA_NODES, MalaysiaNode } from '@/lib/kracked-data'
 import { cyberAudio } from '@/lib/cyber-audio'
-import { MapPin, Activity, Zap, Cpu, Users, Layers, ShieldCheck, Terminal, Compass, Wifi, Radio } from 'lucide-react'
+import { Compass, Cpu, Wifi, Activity, Terminal, ShieldCheck, Zap } from 'lucide-react'
 
 export function CommunityAtlas() {
   const [selectedNode, setSelectedNode] = useState<MalaysiaNode>(MALAYSIA_NODES[0])
@@ -45,7 +45,7 @@ export function CommunityAtlas() {
             Community Atlas
           </h2>
           <p className="text-xs sm:text-sm text-zinc-400 font-mono mt-1">
-            Real-time telemetry of builder clusters, guild fortresses, and regional shipping velocity across Malaysia.
+            Calibrated telemetry of builder clusters, guild fortresses, and regional shipping velocity across Malaysia.
           </p>
         </div>
 
@@ -74,21 +74,132 @@ export function CommunityAtlas() {
       <div className="rounded-xl border border-[#00F0FF]/30 bg-[#080812] shadow-[0_0_40px_rgba(0,0,0,0.8)] overflow-hidden grid grid-cols-1 lg:grid-cols-12">
         
         {/* Left Interactive Visual Map Viewport */}
-        <div className="lg:col-span-7 relative min-h-[320px] sm:min-h-[440px] lg:min-h-[500px] bg-[#020206] border-b lg:border-b-0 lg:border-r border-[#00F0FF]/20 flex items-center justify-center p-3 sm:p-4 overflow-hidden">
+        <div className="lg:col-span-7 relative bg-[#020206] border-b lg:border-b-0 lg:border-r border-[#00F0FF]/20 flex flex-col justify-center p-2 sm:p-4 overflow-hidden">
           
-          {/* Background Map Graphic with Neon Glow */}
-          <div className="relative w-full h-full min-h-[300px] sm:min-h-[400px] flex items-center justify-center">
+          {/* Top Status Telemetry Tag */}
+          <div className="flex items-center justify-between mb-2 px-1 font-mono text-[9px] sm:text-[10px] text-zinc-400">
+            <div className="flex items-center space-x-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9F] animate-ping" />
+              <span className="text-[#00FF9F] font-bold">GRID_LOCK: ACTIVE</span>
+              <span className="text-zinc-600">|</span>
+              <span>CALIBRATED 2:1 SECTOR</span>
+            </div>
+            <div className="text-zinc-500 hidden sm:block">
+              {'[COORDS: 04.21°N, 101.97°E]'}
+            </div>
+          </div>
+
+          {/* Locked Aspect Ratio Map Stage (Strict 2:1 Aspect Ratio to Lock Coordinate Grid) */}
+          <div className="relative w-full aspect-[2/1] rounded-lg overflow-hidden border border-[#00F0FF]/20 bg-black/80">
+            
+            {/* Base Glowing Malaysia Particle Graphic */}
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_20261011-230827-v2cHm1bYdpQa46xQHJILu1poeKf9pI.png"
               alt="Malaysia Builder Density Network Map"
               fill
-              className="object-contain object-center opacity-85 transition-opacity"
+              priority
+              className="object-cover object-center opacity-90 transition-opacity"
             />
+            
+            {/* Scanlines Effect */}
             <div className="absolute inset-0 scanlines opacity-30 pointer-events-none" />
 
-            {/* Interactive Overlay Nodes on map */}
+            {/* SVG Precision Telemetry & Fiber Grid Lines (1000 x 500 Coordinate Space) */}
+            <svg viewBox="0 0 1000 500" className="absolute inset-0 w-full h-full pointer-events-none z-10">
+              <defs>
+                <linearGradient id="fiberGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#00F0FF" stopOpacity="0.8" />
+                  <stop offset="50%" stopColor="#00FF9F" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#00F0FF" stopOpacity="0.8" />
+                </linearGradient>
+
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+
+              {/* Grid Coordinate Matrix Lines */}
+              <g stroke="rgba(0, 240, 255, 0.08)" strokeWidth="0.5">
+                <line x1="200" y1="0" x2="200" y2="500" strokeDasharray="3,6" />
+                <line x1="400" y1="0" x2="400" y2="500" strokeDasharray="3,6" />
+                <line x1="600" y1="0" x2="600" y2="500" strokeDasharray="3,6" />
+                <line x1="800" y1="0" x2="800" y2="500" strokeDasharray="3,6" />
+                <line x1="0" y1="125" x2="1000" y2="125" strokeDasharray="3,6" />
+                <line x1="0" y1="250" x2="1000" y2="250" strokeDasharray="3,6" />
+                <line x1="0" y1="375" x2="1000" y2="375" strokeDasharray="3,6" />
+              </g>
+
+              {/* Peninsular Malaysia Fiber Spine */}
+              <path
+                d="M 205 132 L 240 207 L 285 290 L 335 347 L 385 397"
+                fill="none"
+                stroke="#00F0FF"
+                strokeWidth="1.2"
+                strokeDasharray="4,3"
+                opacity="0.6"
+              />
+
+              {/* Subsea Fiber Cables (West to East Malaysia) */}
+              <path
+                d="M 285 290 Q 400 240 520 320"
+                fill="none"
+                stroke="#00FF9F"
+                strokeWidth="1.5"
+                strokeDasharray="5,4"
+                opacity="0.7"
+                filter="url(#glow)"
+              />
+              <path
+                d="M 285 290 Q 520 160 765 127"
+                fill="none"
+                stroke="#00F0FF"
+                strokeWidth="1.2"
+                strokeDasharray="6,4"
+                opacity="0.5"
+              />
+
+              {/* Borneo East Malaysia Trunk */}
+              <path
+                d="M 520 320 L 765 127"
+                fill="none"
+                stroke="#00FF9F"
+                strokeWidth="1.2"
+                strokeDasharray="4,4"
+                opacity="0.6"
+              />
+
+              {/* Active Selection Target Reticle */}
+              <circle
+                cx={selectedNode.coords.x * 10}
+                cy={selectedNode.coords.y * 5}
+                r="18"
+                fill="none"
+                stroke="#00FF9F"
+                strokeWidth="1"
+                strokeDasharray="3,3"
+                className="animate-spin"
+                style={{ transformOrigin: `${selectedNode.coords.x * 10}px ${selectedNode.coords.y * 5}px` }}
+              />
+              <circle
+                cx={selectedNode.coords.x * 10}
+                cy={selectedNode.coords.y * 5}
+                r="28"
+                fill="none"
+                stroke="#00F0FF"
+                strokeWidth="0.5"
+                opacity="0.4"
+              />
+            </svg>
+
+            {/* Interactive Calibrated Overlay Nodes */}
             {MALAYSIA_NODES.map((node) => {
               const isSelected = selectedNode.id === node.id
+              const isFiltered = regionFilter !== 'ALL' && node.region !== regionFilter
+
               return (
                 <button
                   key={node.id}
@@ -98,40 +209,41 @@ export function CommunityAtlas() {
                     top: `${node.coords.y}%`,
                   }}
                   className={`group absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20 transition-all ${
-                    isSelected ? 'scale-110 sm:scale-125' : 'hover:scale-110 opacity-80 hover:opacity-100'
+                    isFiltered ? 'opacity-25 pointer-events-none' : 'opacity-100'
+                  } ${
+                    isSelected ? 'scale-110 sm:scale-125 z-30' : 'hover:scale-110'
                   }`}
                 >
                   {/* Ping Ring */}
                   <div className="relative flex items-center justify-center">
-                    <span className={`animate-ping absolute inline-flex h-5 w-5 sm:h-6 sm:w-6 rounded-full opacity-75 ${
+                    <span className={`animate-ping absolute inline-flex h-4 w-4 sm:h-5 sm:w-5 rounded-full opacity-80 ${
                       isSelected ? 'bg-[#00FF9F]' : 'bg-[#00F0FF]'
                     }`} />
-                    <span className={`relative inline-flex rounded-full h-3 w-3 sm:h-3.5 sm:w-3.5 border-2 border-black ${
+                    <span className={`relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3 border-2 border-black ${
                       isSelected 
                         ? 'bg-[#00FF9F] shadow-[0_0_15px_#00FF9F]' 
                         : 'bg-[#00F0FF] shadow-[0_0_10px_#00F0FF]'
                     }`} />
                   </div>
 
-                  {/* Label tooltip */}
-                  <span className={`mt-0.5 sm:mt-1 font-mono text-[9px] sm:text-[10px] px-1 sm:px-1.5 py-0.5 rounded border whitespace-nowrap transition-all ${
+                  {/* Node Label Tooltip */}
+                  <span className={`mt-0.5 font-mono text-[8px] sm:text-[9px] px-1 sm:px-1.5 py-0.2 rounded border whitespace-nowrap transition-all shadow-md pointer-events-none ${
                     isSelected
-                      ? 'bg-black/90 text-[#00FF9F] border-[#00FF9F]/80 font-bold shadow-[0_0_10px_rgba(0,255,159,0.4)]'
-                      : 'bg-black/75 text-zinc-300 border-white/10 group-hover:border-[#00F0FF]/50'
+                      ? 'bg-black/95 text-[#00FF9F] border-[#00FF9F] font-bold shadow-[0_0_10px_rgba(0,255,159,0.5)]'
+                      : 'bg-black/85 text-zinc-300 border-white/20 group-hover:border-[#00F0FF]/80 group-hover:text-white'
                   }`}>
-                    {node.name.split('/')[0]} <span className="text-zinc-500 hidden sm:inline">({node.builders})</span>
+                    {node.name.split('/')[0].trim()}
                   </span>
                 </button>
               )
             })}
+
           </div>
 
-          {/* Map Top Status Bar */}
-          <div className="absolute top-2.5 left-2.5 font-mono text-[9px] sm:text-[10px] text-zinc-400 bg-black/85 px-2 py-1 rounded border border-white/10 flex items-center space-x-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9F] animate-ping" />
-            <span>TOPOLOGICAL_GRID</span>
-            <span className="text-zinc-600">|</span>
-            <span className="text-[#00F0FF]">{MALAYSIA_NODES.length} FORGES</span>
+          {/* Sector Calibration Footer */}
+          <div className="mt-2 px-1 flex items-center justify-between font-mono text-[9px] text-zinc-500">
+            <span>GRID_NODE_COUNT: {filteredNodes.length} ACTIVE</span>
+            <span className="text-[#00FF9F]">ALL SECTORS ONLINE</span>
           </div>
 
         </div>
@@ -187,7 +299,7 @@ export function CommunityAtlas() {
                   <button
                     onClick={handlePingTest}
                     disabled={isPinging}
-                    className="text-[9px] px-1.5 py-0.5 rounded bg-white/10 hover:bg-[#00F0FF]/20 text-[#00F0FF]"
+                    className="text-[9px] px-1.5 py-0.5 rounded bg-white/10 hover:bg-[#00F0FF]/20 text-[#00F0FF] transition-colors"
                   >
                     {isPinging ? 'PING...' : 'TEST'}
                   </button>
@@ -229,7 +341,7 @@ export function CommunityAtlas() {
                       : 'bg-black/60 text-zinc-400 hover:text-white border border-white/10'
                   }`}
                 >
-                  {n.name.split(' ')[0]}
+                  {n.name.split('/')[0].split(' ')[0]}
                 </button>
               ))}
             </div>
