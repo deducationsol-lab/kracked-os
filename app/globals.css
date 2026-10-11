@@ -1,0 +1,148 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-mono: var(--font-mono), 'JetBrains Mono', 'Courier New', monospace;
+  --font-sans: var(--font-sans), 'Inter', sans-serif;
+  
+  --color-cyber-green: #00FF9F;
+  --color-cyber-cyan: #00F0FF;
+  --color-cyber-magenta: #FF2D95;
+  --color-cyber-bg: #050508;
+  --color-cyber-card: #0A0A10;
+  --color-cyber-border: rgba(0, 240, 255, 0.15);
+}
+
+:root {
+  --background: #050508;
+  --foreground: #e2e8f0;
+  --card: #08080f;
+  --card-foreground: #f1f5f9;
+  --popover: #08080f;
+  --popover-foreground: #f1f5f9;
+  --primary: #00ff9f;
+  --primary-foreground: #050508;
+  --secondary: #00f0ff;
+  --secondary-foreground: #050508;
+  --muted: #11111b;
+  --muted-foreground: #94a3b8;
+  --accent: #ff2d95;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: rgba(0, 240, 255, 0.15);
+  --input: rgba(0, 240, 255, 0.2);
+  --ring: #00f0ff;
+}
+
+/* Custom Scanline and Cyber Overlay */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.015),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.015)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+}
+
+.cyber-glow-cyan {
+  box-shadow: 0 0 25px -5px rgba(0, 240, 255, 0.35);
+}
+
+.cyber-glow-green {
+  box-shadow: 0 0 25px -5px rgba(0, 255, 159, 0.35);
+}
+
+.cyber-glow-magenta {
+  box-shadow: 0 0 25px -5px rgba(255, 45, 149, 0.35);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 12px rgba(0, 255, 159, 0.6);
+}
+
+.text-glow-magenta {
+  text-shadow: 0 0 12px rgba(255, 45, 149, 0.6);
+}
+
+/* Cyber cut corner utilities */
+.clip-cyber-corner {
+  clip-path: polygon(
+    0 10px,
+    10px 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px)
+  );
+}
+
+.clip-cyber-btn {
+  clip-path: polygon(
+    12px 0,
+    100% 0,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    0 100%,
+    0 12px
+  );
+}
+
+/* Keyframes for subtle cyber blink / glitch */
+@keyframes cyber-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-cyber-pulse {
+  animation: cyber-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes glitch-text {
+  0% { transform: translate(0) }
+  20% { transform: translate(-1px, 1px) }
+  40% { transform: translate(-1px, -1px) }
+  60% { transform: translate(1px, 1px) }
+  80% { transform: translate(1px, -1px) }
+  100% { transform: translate(0) }
+}
+
+.glitch-hover:hover {
+  animation: glitch-text 0.25s infinite;
+}
+
+/* Custom Scrollbar for Terminal aesthetics */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050508;
+}
+::-webkit-scrollbar-thumb {
+  background: #112228;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f0ff33;
+}
